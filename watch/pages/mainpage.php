@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -13,37 +14,10 @@
     <?php
         session_start();
         require('../db/connection.php');
+        require('../views/navbar.php');
         require('../function/functions.php');
     ?>
-<nav>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo"><a class="alogo" href="mainpage.php">Watch!</a></h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li class="menu-list-item"><a class="menu-item-a" href="movies.php">Movies</a></li>
-                    <li class="menu-list-item"><a class="menu-item-a" href="series.php">Series</a></li>
-                    <li class="menu-list-item"><a class="menu-item-a" href="kedvencek.php">Favorites</a></li>
 
-                </ul>
-            </div>
-            <div class="profile-container">
-                <div class="profile-text-container">
-                    <span class="profile-text"><?php echo $_SESSION['email'] ?></span>
-                    <button class="btnLogin-popup" onclick="signout()">signout</button>
-                </div>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-    
     <div class="container">
         <div class="content-container">
             <div class="featured-content" style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('../img/covers/cover1.jpg');">
@@ -90,12 +64,7 @@
         }
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
-
-
-
-
-

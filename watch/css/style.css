@@ -43,11 +43,17 @@
   
   .menu-list-item {
     margin-right: 30px;
+    color: #fff;
+    text-decoration: none;
   }
   
   .menu-list-item.active {
     font-weight: bold;
+    margin-right: 30px;
+    color: #fff;
+    text-decoration: none;
   }
+  
   .profile-container {
     flex: 2;
     display: flex;
@@ -259,6 +265,7 @@
 .menu-item-a{
     text-decoration: none;
     color: white;
+    padding: 10px auto;
 }
 
 .menu-item-a.active{
@@ -305,6 +312,3 @@ color: black;
   background-color: darkgray;
   color: black;
   }
-
-
-  

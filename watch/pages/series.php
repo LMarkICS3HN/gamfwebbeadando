@@ -15,36 +15,9 @@
     <?php
         session_start();
         require('../db/connection.php');
+        require('../views/navbar.php');
         require('../function/functions.php');
     ?>
-<nav>
-    <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo"><a class="alogo" href="../index.php">Watch!</a></h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li class="menu-list-item"><a class="menu-item-a" href="movies.php">Movies</a></li>
-                    <li class="menu-list-item active"><a class="menu-item-a" href="series.php">Series</a></li>
-                    <li class="menu-list-item"><a class="menu-item-a" href="kedvencek.php">Favorites</a></li>
-
-                </ul>
-            </div>
-            <div class="profile-container">
-                <div class="profile-text-container">
-                <span class="profile-text"><?php echo $_SESSION['email'] ?></span>
-                <button class="btnLogin-popup" onclick="signout()">signout</button>
-                </div>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
 
     <div class="container">
         <div class="content-container">

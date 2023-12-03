@@ -29,10 +29,9 @@
         if(isset($_GET['page']) && $_GET['page'] == 'signout'){
             signout();
         } else {
-           header("Location: http://localhost/watch/pages/mainpage.php");
+           header("Location: http://filmajanlo.lmarkwebbeadando.nhely.hu/pages/mainpage.php");
         }
     }
 ?>
-
 </body>
 </html>

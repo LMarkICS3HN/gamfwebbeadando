@@ -1,7 +1,7 @@
 <?php
     define('SERVER','localhost');
-    define('USER','root');
-    define('PASSWORD','');
+    define('USER','watch');
+    define('PASSWORD','watch11');
     define('DB','watch');
 
     function connect()
