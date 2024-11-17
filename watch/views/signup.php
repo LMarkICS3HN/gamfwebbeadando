@@ -9,7 +9,6 @@
 </head>
 <body>
     <?php
-    session_start();
     require_once __DIR__ . '/../function/functions.php'; 
     ?>
     <div class="center">

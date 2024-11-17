@@ -1,14 +1,11 @@
 <?php
-// Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-// Router logic
-$page = strtolower(trim($_GET['page'] ?? 'mainpage')); // Default page
+$page = strtolower(trim($_GET['page'] ?? 'mainpage')); 
 
-// Allowed pages and their directories
 $allowed_pages = [
     'mainpage' => 'pages',
     'movies' => 'pages',
@@ -16,8 +13,8 @@ $allowed_pages = [
     'contact_form' => 'pages',
     'kedvencek' => 'pages',
     'signout' => 'pages',
-    'login' => 'views', // Login is in the views directory
-    'signup' => 'views' // Signup is in the views directory
+    'login' => 'views', 
+    'signup' => 'views' 
 ];
 
 $protected_pages = ['mainpage', 'movies', 'series', 'contact_form', 'kedvencek', 'signout'];
@@ -25,9 +22,9 @@ if (in_array($page, $protected_pages) && !isset($_SESSION['email'])) {
     header("Location: index.php?page=login");
     exit();
 }
-// Check if the requested page is allowed
+
 if (array_key_exists($page, $allowed_pages)) {
-    $file_path = __DIR__ . '/' . $allowed_pages[$page] . "/$page.php"; // Determine the correct path
+    $file_path = __DIR__ . '/' . $allowed_pages[$page] . "/$page.php"; 
     if (file_exists($file_path)) {
         include $file_path;
     } else {
@@ -36,7 +33,6 @@ if (array_key_exists($page, $allowed_pages)) {
         echo "<p>The requested file '$file_path' does not exist.</p>";
     }
 } else {
-    // Handle invalid pages
     http_response_code(404);
     echo "<h1>404 - Invalid Page Requested</h1>";
     echo "<p>The page '$page' is not allowed or does not exist.</p>";
