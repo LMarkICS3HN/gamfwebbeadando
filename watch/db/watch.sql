@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.6.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2023. Nov 24. 13:37
--- Kiszolgáló verziója: 10.4.27-MariaDB
--- PHP verzió: 8.1.12
+-- Host: mysql.omega:3306
+-- Generation Time: Jan 21, 2024 at 03:53 PM
+-- Server version: 5.7.42-log
+-- PHP Version: 7.2.34-43+0~20230902.90+debian12~1.gbpc2a431
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,29 +18,54 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `watch`
+-- Database: `watch`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `moviedetails`
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`) VALUES
+(1, 'adasdasd', 'asdad@free.hu', 'asdasd', '2024-01-21 14:04:36'),
+(2, 'Leo', 'mark@free.hu', 'Igen ez igy jo', '2024-01-21 14:06:29'),
+(3, 'Mark', 'mark@free.hu', 'Nem tudom mit irjak', '2024-01-21 14:08:18'),
+(4, 'déwosz', 'dew@free.hu', 'szevasz mimizumi', '2024-01-21 14:15:45'),
+(5, 'leo ', 'leo@nemtom.hu', 'asdjasidfjsaoifas', '2024-01-21 14:45:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `moviedetails`
 --
 
 CREATE TABLE `moviedetails` (
-  `Movie_id` varchar(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `Stars` varchar(255) NOT NULL,
-  `writter` varchar(255) NOT NULL,
-  `director` varchar(50) NOT NULL,
-  `genere` varchar(50) NOT NULL,
+  `Movie_id` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Stars` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `writter` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `director` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `genere` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `year` int(15) NOT NULL,
-  `story_Line` varchar(4000) NOT NULL,
-  `coverimage` varchar(15) NOT NULL
+  `story_Line` varchar(4000) COLLATE utf8_hungarian_ci NOT NULL,
+  `coverimage` varchar(15) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `moviedetails`
+-- Dumping data for table `moviedetails`
 --
 
 INSERT INTO `moviedetails` (`Movie_id`, `name`, `Stars`, `writter`, `director`, `genere`, `year`, `story_Line`, `coverimage`) VALUES
@@ -68,23 +93,23 @@ INSERT INTO `moviedetails` (`Movie_id`, `name`, `Stars`, `writter`, `director`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `seriesdetails`
+-- Table structure for table `seriesdetails`
 --
 
 CREATE TABLE `seriesdetails` (
-  `Series_id` varchar(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `Stars` varchar(255) NOT NULL,
-  `writter` varchar(255) NOT NULL,
-  `director` varchar(50) NOT NULL,
-  `genere` varchar(50) NOT NULL,
+  `Series_id` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Stars` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `writter` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `director` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `genere` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `year` int(15) NOT NULL,
-  `story_Line` varchar(4000) NOT NULL,
-  `coverimage` varchar(15) NOT NULL
+  `story_Line` varchar(4000) COLLATE utf8_hungarian_ci NOT NULL,
+  `coverimage` varchar(15) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `seriesdetails`
+-- Dumping data for table `seriesdetails`
 --
 
 INSERT INTO `seriesdetails` (`Series_id`, `name`, `Stars`, `writter`, `director`, `genere`, `year`, `story_Line`, `coverimage`) VALUES
@@ -117,44 +142,63 @@ INSERT INTO `seriesdetails` (`Series_id`, `name`, `Stars`, `writter`, `director`
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `email` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `email` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`email`, `username`, `password`) VALUES
+('aaa@aaa.hu', 'aaa', '3b3690fba8bd08059eae130425396eb05ded1b7d'),
 ('asd@asd.hu', 'qwert', 'ceedf12f8fe3dc63d35b2567a59b93bd62ff729a'),
+('mark@free.hu', 'mark', '54499ea2879e2b4366f66818eabccd0a3db425da'),
+('mark11@free.hu', 'mark137', '626731aef1f344b1776565cb4480f5e2a05cfb3c'),
 ('valakibiztosaz@gmail.com', 'valaki', 'adcd7048512e64b48da55b027577886ee5a36350');
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `moviedetails`
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `moviedetails`
 --
 ALTER TABLE `moviedetails`
   ADD PRIMARY KEY (`Movie_id`);
 
 --
--- A tábla indexei `seriesdetails`
+-- Indexes for table `seriesdetails`
 --
 ALTER TABLE `seriesdetails`
   ADD PRIMARY KEY (`Series_id`);
 
 --
--- A tábla indexei `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,6 +8,9 @@
     <title>Login</title>
 </head>
 <body>
+<?php
+require_once __DIR__ . '/../function/functions.php'; 
+?>
 <div class="center">
         <h1>Login</h1>
         <form action="" method="post">

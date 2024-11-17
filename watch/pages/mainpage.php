@@ -12,10 +12,9 @@
 
 <body>
     <?php
-        session_start();
-        require('../db/connection.php');
-        require('../views/navbar.php');
-        require('../function/functions.php');
+        require_once __DIR__ . '/../db/connection.php';
+        require_once __DIR__ . '/../views/navbar.php';
+        require_once __DIR__ . '/../function/functions.php';
     ?>
 
     <div class="container">
@@ -56,11 +55,10 @@
     </div>
 
     <script src="../js/main.js"></script>
-    <script src="../js/reg.js"></script>
     <script>
         function signout()
         {
-            location.href='/watch/index.php?page=signout';
+            location.href = 'index.php?page=signout';
         }
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

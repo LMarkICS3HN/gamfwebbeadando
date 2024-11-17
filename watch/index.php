@@ -1,37 +1,44 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/log_reg.css">
-    <title>WATCH</title>
-</head>
-<body>
 <?php
-    session_start();
-    require('db/connection.php');
-    require('function/functions.php');
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    if(isset($_COOKIE['email'])){
-        if(!isset($_SESSION['email'])){
-            $_SESSION['email'] = $_COOKIE['email'];
-        }
-    }
+session_start();
+// Router logic
+$page = strtolower(trim($_GET['page'] ?? 'mainpage')); // Default page
 
-    if(isset($_SESSION['email']) == false){
-        if(isset($_GET['page']) && $_GET['page'] == 'signup'){
-            require('views/signup.php');
-        } else{
-            require('views/login.php');
-        }
-    }else{
-        if(isset($_GET['page']) && $_GET['page'] == 'signout'){
-            signout();
-        } else {
-           header("Location: http://filmajanlo.lmarkwebbeadando.nhely.hu/pages/mainpage.php");
-        }
+// Allowed pages and their directories
+$allowed_pages = [
+    'mainpage' => 'pages',
+    'movies' => 'pages',
+    'series' => 'pages',
+    'contact_form' => 'pages',
+    'kedvencek' => 'pages',
+    'signout' => 'pages',
+    'login' => 'views', // Login is in the views directory
+    'signup' => 'views' // Signup is in the views directory
+];
+
+$protected_pages = ['mainpage', 'movies', 'series', 'contact_form', 'kedvencek', 'signout'];
+if (in_array($page, $protected_pages) && !isset($_SESSION['email'])) {
+    header("Location: index.php?page=login");
+    exit();
+}
+// Check if the requested page is allowed
+if (array_key_exists($page, $allowed_pages)) {
+    $file_path = __DIR__ . '/' . $allowed_pages[$page] . "/$page.php"; // Determine the correct path
+    if (file_exists($file_path)) {
+        include $file_path;
+    } else {
+        http_response_code(404);
+        echo "<h1>404 - Page Not Found</h1>";
+        echo "<p>The requested file '$file_path' does not exist.</p>";
     }
+} else {
+    // Handle invalid pages
+    http_response_code(404);
+    echo "<h1>404 - Invalid Page Requested</h1>";
+    echo "<p>The page '$page' is not allowed or does not exist.</p>";
+}
 ?>
-</body>
-</html>

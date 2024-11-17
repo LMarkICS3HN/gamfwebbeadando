@@ -1,4 +1,5 @@
 <?php 
+    require_once __DIR__ . '/../db/connection.php';
         function signup()
         {
             $sql = "insert into user values( 
@@ -6,7 +7,11 @@
                 '".$_POST['signup_username']."',
                 '".hashed($_POST['new_password'])."')";
             
-                if(set_data($sql)){
+                if (set_data($sql)) {
+                    session_start();
+                    $_SESSION['email'] = $_POST['signup_email'];
+                    $_SESSION['username'] = $_POST['signup_username'];
+            
                     echo "<script>window.location='index.php'</script>";
                 }
         }
